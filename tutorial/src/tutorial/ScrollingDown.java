@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.TouchAction;
 import static io.appium.java_client.touch.TapOptions.tapOptions;
 import static io.appium.java_client.touch.offset.ElementOption.element;
@@ -35,6 +36,11 @@ public class ScrollingDown extends Base {
 		// next is to verify whether we have arrive at the destination point
 		String T = driver.findElementByXPath("//android.widget.TextView[@text = 'Rotating Button']").getAttribute("displayed");
 		System.out.println("the element isDisplayed = " + T);
+		
+		// another example of scrolling down is
+		// using parent id to scroll
+		// this is useful when you need to get to an exact part of a list
+		driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"com.androidsample.generalstore:id/rvProductList\")).scrollIntoView(new UiSelector().textMatches(\"\").instance(0))"));
 	}
 
 }
